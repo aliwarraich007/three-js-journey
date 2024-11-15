@@ -59,12 +59,72 @@ const gui = new GUI()
 // gradientTexture.generateMipmaps = false
 // material.gradientMap = gradientTexture
 
-const material = new THREE.MeshStandardMaterial();
-material.roughness = 0.32;
-material.metalness = 0.34
+// const material = new THREE.MeshStandardMaterial();
+// // material.roughness = 0.32;
+// // material.metalness = 0.34
+// material.map = doorColorTexture;
+// material.aoMap = doorAmbientOcclusionTexture;
+// material.aoMapIntensity = 1;
+// material.displacementScale = doorHeightTexture;
+// material.displacementScale = 0.1;
+// material.metalnessMap = doorMetalnessTexture;
+// material.roughnessMap = doorRoughnessTexture
+// material.normalMap = doorNormalTexture;
+// material.transparent = true;
+// material.normalMap = doorNormalTexture;
 
-gui.add(material, 'roughness').min(0).max(1).step(0.0001);
-gui.add(material, 'metalness').min(0).max(1).step(0.0001);
+// gui.add(material, 'roughness').min(0).max(1).step(0.0001);
+// gui.add(material, 'metalness').min(0).max(1).step(0.0001);
+
+
+const material = new THREE.MeshPhysicalMaterial();
+material.roughness = 0;
+material.metalness = 0;
+// material.map = doorColorTexture;
+// material.aoMap = doorAmbientOcclusionTexture;
+// material.aoMapIntensity = 1;
+// material.displacementScale = doorHeightTexture;
+// material.displacementScale = 0.1;
+// material.metalnessMap = doorMetalnessTexture;
+// material.roughnessMap = doorRoughnessTexture
+// material.normalMap = doorNormalTexture;
+// material.transparent = true;
+// material.normalMap = doorNormalTexture;
+// material.normalScale.set(0.5, 0.5)
+// material.alphaMap = doorAlphaTexture;
+
+// clear coat
+
+// material.clearcoat = 1;
+// material.clearcoatRoughness = 0
+// gui.add(material, 'clearcoat').min(0).max(1).step(0.0001);
+// gui.add(material, 'clearcoatRoughness').min(0).max(1).step(0.0001);
+
+// sheen
+//  material.sheen = 1;
+//  material.sheenRoughness = 0;
+//  material.sheenColor.set(1, 1, 1)
+
+// iridescence
+
+// material.iridescence = 1;
+// material.iridescenceIOR =  1;
+// material.iridescenceThicknessRange = [100, 100]
+// gui.add(material.iridescenceThicknessRange, '0').min(0).max(1000).step(1)
+// gui.add(material.iridescenceThicknessRange, '1').min(0).max(1000).step(1)
+// gui.add(material, 'iridescence').min(0).max(1).step(0.0001);
+// gui.add(material, 'iridescenceIOR').min(0).max(2.33).step(0.0001);
+
+material.transmission = 1;
+material.ior = 1.5;
+material.thickness = 0.5;
+
+gui.add(material, 'transmission').min(0).max(1).step(0.0001);
+gui.add(material, 'ior').min(0).max(10).step(0.0001);
+gui.add(material, 'thickness').min(0).max(10).step(0.0001);
+
+
+
 
 const sphere = new THREE.Mesh(
   new THREE.SphereGeometry(0.6, 16, 16),
